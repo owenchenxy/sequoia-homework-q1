@@ -109,11 +109,11 @@ def main():
                                 verify=log_server_verify,
                                 cert=log_server_cert)
     if response.status_code != 200:
-        print(f'Failed to upload log info to server({log_server_protocol}://{log_server_url})')
+        print(f'Failed to upload {len(log_entries)} log entries to server({log_server_protocol}://{log_server_url})')
         print(f'Error: {response.status_code} {response.text}')
         sys.exit(-1)
 
-    print(f'Success upload log info to server({log_server_protocol}://{log_server_url})')
+    print(f'Success upload {len(log_entries)} log entries to server({log_server_protocol}://{log_server_url})')
     sys.exit(0)
 
 if __name__ == '__main__':
