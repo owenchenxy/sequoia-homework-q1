@@ -45,7 +45,7 @@ Run the command below:
 python3 main.py -f syslog.log
 ```
 
-By specifying `-v` we can see the response and find the post data in it.
+By specifying `-s` or `--show-response` we can see the response and find the post data in it.
 ```bash
 python3 main.py -f syslog.log --show-response
 ```
