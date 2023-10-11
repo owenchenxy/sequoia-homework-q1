@@ -9,13 +9,43 @@ The default configuration file `config.yaml` is located in the repo's root direc
 - **log_server.cert_file**: The `.pem` file path you use for SSL/TLS verification
 
 # Command Line Options
+## Use Default Configuration Path
 You can run as below using the default configuration file:
-
 ```bash
 python3 main.py -f syslog.log
 ```
 
+## Use Custom Configuration File Path
 If your configuration file is located somewhere else, run:
 ```bash
 python3 main.py -c <config_file_path> -f syslog.log
+```
+
+## Show Response From Server
+To show response from server, specify option `-s` or `--show-response`
+```bash
+python3 main.py -f syslog.log --show-response
+```
+# Test
+With the configs below, we can send data to the `httpbin` server.
+```yaml
+log_server:
+  # log server address
+  url: "httpbin.org/post"
+  # http or https
+  protocal: "https"
+  # whether we verify the server's TLS certificate
+  verify: true
+  # path to ssl client cert file (.pem)
+  cert_file: ""
+```
+
+Run the command below:
+```bash
+python3 main.py -f syslog.log
+```
+
+By specifying `-v` we can see the response and find the post data in it.
+```bash
+python3 main.py -f syslog.log --show-response
 ```

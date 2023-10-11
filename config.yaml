@@ -1,6 +1,6 @@
 log_server:
   # log server address
-  url: "foo.com/bar"
+  url: "httpbin.org/post"
   # http or https
   protocal: "https"
   # whether we verify the server's TLS certificate

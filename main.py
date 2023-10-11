@@ -84,6 +84,7 @@ def main():
     parser = argparse.ArgumentParser(description='Analyze log file and send data to server')  
     parser.add_argument('--log-file', '-f', type=str, help='log file path')
     parser.add_argument('--config', '-c', type=str, help='configuration file path', default='config.yaml')
+    parser.add_argument('--show-response', '-s', action='store_true', help='show response from server', default=False)
     args = parser.parse_args()
     if not args.log_file:
         print('Error: log file path is required')
@@ -112,6 +113,9 @@ def main():
         print(f'Failed to upload {len(log_entries)} log entries to server({log_server_protocol}://{log_server_url})')
         print(f'Error: {response.status_code} {response.text}')
         sys.exit(-1)
+    
+    if args.show_response:
+        print(response.json())
 
     print(f'Success upload {len(log_entries)} log entries to server({log_server_protocol}://{log_server_url})')
     sys.exit(0)
